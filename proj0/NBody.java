@@ -1,17 +1,17 @@
 public class NBody {
     public static double readRadius(String s) {
         In in = new In(s);
-        int countp = in.readInt();
+        int countPlanets = in.readInt();
         double radiusUniversal = in.readDouble();
 
         return radiusUniversal;
     }
 
-    public static Planet[] readp(String s) {
+    public static Planet[] readPlanets(String s) {
         In in = new In(s);
         int count = in.readInt();
         Planet[] p = new Planet[count];
-        double countp = in.readDouble();
+        double countPlanets = in.readDouble();
         for (int i = 0; i < count; i++) {
             double xP = in.readDouble();
             double yP = in.readDouble();
@@ -31,7 +31,7 @@ public class NBody {
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         double radius = readRadius(filename);
-        Planet[] p = readp(filename);
+        Planet[] p = readPlanets(filename);
 
         StdDraw.enableDoubleBuffering();
 
