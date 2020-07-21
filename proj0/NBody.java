@@ -33,9 +33,33 @@ public class NBody {
         double radius = readRadius(filename);
         Planet[] p = readPlanets(filename);
 
-        System.out.println(radius);
-        for (int i = 0; i < p.length; i++) {
-            System.out.println(p);
+        StdDraw.enableDoubleBuffering();
+
+        double time = 0;
+        while (time <= T) {
+            double[] xForces = new double[p.length];
+            double[] yForces = new double[p.length];
+            for (int i = 0; i < p.length; i++) {
+                xForces[i] = p[i].calcNetForceExertedByX(p);
+                yForces[i] = p[i].calcNetForceExertedByY(p);
+            }
+            for (int i = 0; i < p.length; i++) {
+                p[i].update(dt, xForces[i], yForces[i]);
+            }
+
+            String imageToDraw = "images/starfield.jpg";
+            StdDraw.setScale(radius * (-1), radius);
+            StdDraw.clear();
+            StdDraw.picture(0, 0, imageToDraw);
+
+            for (Planet star : p) {
+                star.draw();
+            }
+
+            StdDraw.show();
+            StdDraw.pause(10);
+
+            time += dt;
         }
     }
 }
