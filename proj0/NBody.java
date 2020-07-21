@@ -20,8 +20,10 @@ public class NBody {
             double m = in.readDouble();
             String img = in.readString();
             p[i] = new Planet(xP, yP, xV, yV, m, img);
-            System.out.println("Planet: " + img + ", @ coordinate: (" + xP + ", " + yP + "); initial velocity: (" + xV
-                    + ", " + yV + ")");
+            /**
+             * System.out.println("Planet: " + img + ", @ coordinate: (" + xP + ", " + yP +
+             * "); initial velocity: (" + xV + ", " + yV + ")");
+             */
         }
         return p;
     }
